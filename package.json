@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "install:all": "cd backend && npx rimraf node_modules && npm install && cd ../frontend && npx rimraf node_modules && npm install"
+  },
+  "author": "Philip Jones",
+  "devDependencies": {
+    "rimraf": "^6.0.1"
+  }
+}

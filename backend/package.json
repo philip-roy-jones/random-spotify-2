@@ -4,8 +4,7 @@
   "main": "dist/server.js",
   "scripts": {
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/server.ts",
+    "dev": "nodemon --legacy-watch --watch src --ext ts,json --exec ts-node src/server.ts",
     "start": "node dist/server.js"
   },
   "repository": {
@@ -25,6 +24,7 @@
   "devDependencies": {
     "@types/express": "^5.0.1",
     "@types/node": "^22.13.11",
+    "nodemon": "^3.1.9",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.2"
   }

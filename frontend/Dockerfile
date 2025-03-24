@@ -5,19 +5,17 @@ FROM node:18
 WORKDIR /app
 
 # Copy package.json and package-lock.json
-COPY package.json ./
+COPY package*.json ./
 
 # Install dependencies
 RUN npm install
+RUN npm install -g vite
 
 # Copy the rest of the application code
 COPY . .
-
-# Build the application
-RUN npm run build
 
 # Expose the port the app runs on
 EXPOSE 3001
 
 # Serve the built application
-CMD ["npm", "run", "dev", "--", "--host", "0.0.0.0"]
+CMD ["npm", "run", "dev"]
