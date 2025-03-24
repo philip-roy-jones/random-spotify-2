@@ -1,5 +1,5 @@
 # Use the official Node.js image
-FROM node:18
+FROM node:20
 
 # Set the working directory
 WORKDIR /app
@@ -9,7 +9,6 @@ COPY package*.json ./
 
 # Install dependencies
 RUN npm install
-RUN npm install -g vite
 
 # Copy the rest of the application code
 COPY . .
