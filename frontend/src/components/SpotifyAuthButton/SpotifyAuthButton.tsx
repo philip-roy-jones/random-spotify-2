@@ -1,17 +1,30 @@
 import React from "react";
-import {Button} from "@/components";
+import { Button } from "@/components";
 
 const SpotifyAuthButton: React.FC = () => {
-  const buildSpotifyAuthUrl = () => {
-    const clientId = "your-client-id";
-    const redirectUri = encodeURIComponent("http://localhost:3000/callback");
-    const scopes = encodeURIComponent("user-read-private user-read-email");
-    return `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${redirectUri}&scope=${scopes}`;
+  const handleLogin = async () => {
+    try {
+      const response = await fetch("/api/authorize", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        console.log("Response not ok:", response.status, response.statusText);
+        throw new Error(`Authorization failed: ${response.statusText}`);
+      }
+
+      const data = await response.json();
+      console.log(data.url);
+      // You can handle the response data here, e.g., redirect to Spotify or save tokens
+    } catch (error) {
+      console.error("Error during authorization:", error);
+    }
   };
 
-  const spotifyAuthUrl = buildSpotifyAuthUrl();
-
-  return <Button url={spotifyAuthUrl} text={"Click Me"} />;
+  return <Button onClick={handleLogin} text={"Login with Spotify"} />;
 };
 
 export default SpotifyAuthButton;
