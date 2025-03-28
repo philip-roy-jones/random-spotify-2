@@ -4,7 +4,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 
 // Import routes
-import authRoutes from './routes/api/auth';
+import authRoutes from './routes/spotifyRoutes';
 
 dotenv.config();
 
